@@ -1,5 +1,10 @@
 ## Usage
+```
 java -jar BugReproducer.jar ${CONFIG_PATH}
+```
+
+The jar file was built and packaged with OpenJDK-8.
+You can get source file from <https://github.com/lpypl/BugReproducer>.
 
 ## Config
 Config is a description of the bug reproduction process.  
@@ -45,3 +50,7 @@ Comments:
 `initList`: A sequence of sqls used to init the test database.
 
 `operationList`: A sequence of sqls used to test the database. The `trxId` is transaction ID, and the `sql` is just a excutable SQL.
+
+## TiDB Installation
+
+Please refer to <https://github.com/pingcap/tiup>
