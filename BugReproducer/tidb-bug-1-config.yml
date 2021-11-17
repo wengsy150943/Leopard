@@ -1,0 +1,27 @@
+# TiDB Version: 3.0.4/3.0.5/3.0.6
+# 
+# Description:
+# 
+# Transaction 739 writes a record(676) of table_ 7_2. 
+# Transaction 723 also writes this record before transaction 739 was committed, 
+# resulting in dirty write.
+
+initUrl: "jdbc:mysql://127.0.0.1:4000?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
+connUrl: "jdbc:mysql://127.0.0.1:4000/reproduceDB?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
+database: "reproduceDB"
+user: "root"
+password: "root"
+initList:
+  - "create table table_7_2(a int primary key, b int, c double);"
+  - "insert into table_7_2 values(676, 5012153, 2240641.4);"
+operationList:
+  - trxId: "739"
+    sql: "update table_7_2 set b=-5012153, c=2240641.4 where a=676;"
+  - trxId: "723"
+    sql: "update table_7_2 set b=852150 where a=676;"
+  - trxId: "739"
+    sql: "commit;"
+  - trxId: "1000"
+    sql: "select * from table_7_2;"
+  - trxId: "1000"
+    sql: "commit;"

@@ -1,0 +1,22 @@
+# TiDB Version: 4.0.0
+# 
+# Description:
+# 
+# The write operation of TiDB reads the latest committed data, 
+# only locks the data that meets the conditions, but does not avoid the phantom 
+# (although the read operation can avoid the phantom through MVCC), 
+# then the write operation of the first sql below will not lock the data, 
+# but in fact, TIDB locks it, blocking the insertion operation of another transaction.
+
+initUrl: "jdbc:mysql://127.0.0.1:3306?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
+connUrl: "jdbc:mysql://127.0.0.1:3306/reproduceDB?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
+database: "reproduceDB"
+user: "root"
+password: "root"
+initList:
+  - "create table t(a int primary key, b int);"
+operationList:
+  - trxId: "1"
+    sql: "update t set b=314 where a=1;"
+  - trxId: "2"
+    sql: "insert into t values(1,3);"
