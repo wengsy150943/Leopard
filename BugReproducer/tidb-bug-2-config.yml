@@ -1,21 +1,33 @@
+# TiDB Version: 4.0.0
+
+# Description:
+# The write operation of TiDB reads the latest committed data, 
+# only locks the data that meets the conditions, but does not avoid the phantom 
+# (although the read operation can avoid the phantom through MVCC), 
+# then the write operation of the first sql below will not lock the data, 
+# but in fact, TIDB locks it, blocking the insertion operation of another transaction.
+
+# 描述：
+# TiDB 的写操作读取最新提交的数据，
+# 只对满足条件的数据加锁，不避免幻象
+#（虽然读操作可以通过MVCC避免幻象），
+# 那么下面第一个sql的写操作不会锁定数据，
+# 但事实上是 TIDB 锁住了它，阻塞了另一个事务的插入操作。
+
 initUrl: "jdbc:mysql://127.0.0.1:4000?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
 connUrl: "jdbc:mysql://127.0.0.1:4000/reproduceDB?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
-database: "reproduceDB"
 user: "root"
 password: ""
-initList:
-  - "create table table_7_2(a int primary key, b int, c double);"
-  - "insert into table_7_2 values(676, 5012153, 2240641.4);"
+create: true
+load: true
+createDatabaseList:
+  - "drop database if exists reproduceDB;"
+  - "create database reproduceDB;"
+createTableList:
+  - "create table t(a int primary key, b int);"
+loadList: []
 operationList:
-  - trxId: "1001"
-    sql: "select * from table_7_2;"
-  - trxId: "1001"
-    sql: "commit;"
-  - trxId: "739"
-    sql: "update table_7_2 set b=5012153 and c=2240641.4 where a=676;"
-  - trxId: "739"
-    sql: "commit;"
-  - trxId: "1000"
-    sql: "select * from table_7_2;"
-  - trxId: "1000"
-    sql: "commit;"
+  - trxId: "1"
+    sql: "update t set b=314 where a=1;"
+  - trxId: "2"
+    sql: "insert into t values(1,3);"

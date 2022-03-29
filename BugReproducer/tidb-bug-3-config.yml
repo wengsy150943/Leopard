@@ -1,22 +1,43 @@
-# TiDB Version: 4.0.0
-# 
-# Description:
-# 
-# The write operation of TiDB reads the latest committed data, 
-# only locks the data that meets the conditions, but does not avoid the phantom 
-# (although the read operation can avoid the phantom through MVCC), 
-# then the write operation of the first sql below will not lock the data, 
-# but in fact, TIDB locks it, blocking the insertion operation of another transaction.
+# TiDB Version: 3.0.5
 
-initUrl: "jdbc:mysql://127.0.0.1:3306?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
-connUrl: "jdbc:mysql://127.0.0.1:3306/reproduceDB?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
-database: "reproduceDB"
+# Description:
+# There are two historical versions of attribute6 for the record (3873) of table_8_2,
+# The first one is -0.386, the second one is 0.484, according to the order of occurrence time,
+# the attribute6 of transaction 2 read record 3873 should be 0.484,
+# But TiDB returns -0.386, indicating that there is a problem with TiDB's consistent reading.
+
+# 描述：
+# 对于table_8_2的record(3873)有两个attribute6的历史版本，
+# 第一个是-0.386，第二个是0.484
+# -0.386 先被创建，然后0.484被创建，之后事务2读取primarykey=3873的attribute6
+# 事务2读取记录3873的attribute6应该是0.484，
+# 但是 TiDB 返回 -0.386，说明 TiDB 的一致性读取有问题。
+
+initUrl: "jdbc:mysql://127.0.0.1:4000?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
+connUrl: "jdbc:mysql://127.0.0.1:4000/reproduceDB?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
 user: "root"
-password: "root"
-initList:
-  - "create table t(a int primary key, b int);"
+password: ""
+create: true
+load: true
+createDatabaseList:
+  - "drop database if exists reproduceDB;"
+  - "create database reproduceDB;"
+createTableList:
+  - "create table table_8_2(primarykey int primary key, attribute1 double, attribute6 double);"
+loadList:
+  - "insert into table_8_2 values(3873, 0.213, 0.234);"
 operationList:
   - trxId: "1"
-    sql: "update t set b=314 where a=1;"
+    sql: "update table_8_2 set attribute6=-0.386 where primarykey=3873;"
+  - trxId: "1"
+    sql: "commit;"
   - trxId: "2"
-    sql: "insert into t values(1,3);"
+    sql: "SET TRANSACTION ISOLATION LEVEL Repeatable Read;"
+  - trxId: "3"
+    sql: "update table_8_2 set attribute6=0.484 where primarykey=3873;"
+  - trxId: "3"
+    sql: "commit;"
+  - trxId: "2"
+    sql: "select attribute1 from table_8_2 where primarykey=3873;"
+  - trxId: "2"
+    sql: "select attribute6 from table_8_2 where primarykey=3873;"
