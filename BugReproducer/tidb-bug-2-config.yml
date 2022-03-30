@@ -9,10 +9,9 @@
 
 # 描述：
 # TiDB 的写操作读取最新提交的数据，
-# 只对满足条件的数据加锁，不避免幻象
-#（虽然读操作可以通过MVCC避免幻象），
-# 那么下面第一个sql的写操作不会锁定数据，
-# 但事实上是 TIDB 锁住了它，阻塞了另一个事务的插入操作。
+# 只对满足条件的数据加锁，不避免幻象，（虽然读操作可以通过MVCC避免幻象），
+# 因此下面第一个sql的写操作不应该锁定数据，
+# 但事实上是 TIDB 锁住了它，阻塞了另一个事务2的插入操作。
 
 initUrl: "jdbc:mysql://127.0.0.1:4000?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
 connUrl: "jdbc:mysql://127.0.0.1:4000/reproduceDB?serverTimezone=UTC&useServerPrepStmts=true&cachePrepStmts=true"
