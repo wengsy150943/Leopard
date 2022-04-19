@@ -1,8 +1,17 @@
-## 文档  
+# 文档  
 
 - [English](/README.md)  
 - [简体中文](/README_CN.md)  
 
+# 仓库概览
+
+这个仓库包含三个部分
+
+1. `./Bugs List` 包含Leopard发现的代表性代码缺陷。
+2.`./Interesting Bugs` 演示在TiDB中发现的几个代码缺陷。
+3. `./BugReporducer` 是在TiDB中发现的几个错误的详细重现步骤。
+
+# Bug Reproducer
 
 ## 使用方法
 ```

@@ -1,8 +1,17 @@
-## Documentation
+# Documentation
 
 - [English](/README.md)  
 - [简体中文](/README_CN.md)  
 
+# Overview of the Repository
+
+This repository includes three parts: 
+
+1. `./Bugs List` contains the representative bugs found by Leopard.
+2.`./Interesting Bugs` demonstrates the severak bugs found in TiDB.
+3. `./BugReporducer` is the detailed reproduce step for several bugs found in TiDB.
+
+# Bug Reproducer
 
 ## Usage
 ```
@@ -13,8 +22,8 @@ The jar file was built and packaged with OpenJDK-8.
 You can get source file from <https://github.com/lpypl/BugReproducer>.
 
 
-## Config
-Config is a description of the bug reproduction process.  
+## Configuration
+Configuration is a description of the bug reproduction process.  
 
 Here is an example.
 
