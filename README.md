@@ -8,7 +8,7 @@
 This repository includes three parts: 
 
 1. `./Bugs List` contains the representative bugs found by Leopard.
-2.`./Interesting Bugs` demonstrates the severak bugs found in TiDB.
+2. `./Interesting Bugs` demonstrates the severak bugs found in TiDB.
 3. `./BugReporducer` is the detailed reproduce step for several bugs found in TiDB.
 
 # Bug Reproducer
