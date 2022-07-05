@@ -7,7 +7,7 @@
 
 This repository includes four parts: 
 
-1. `./Full Version` presents our full papaer.
+1. `./Full Version` contains the full verison of our paper.
 2. `./Bugs List` contains the representative bugs found by Leopard.
 3. `./Interesting Bugs` demonstrates the several bugs found in TiDB.
 4. `./BugReporducer` is the detailed reproduce step for several bugs found in TiDB.
