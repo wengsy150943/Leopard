@@ -5,7 +5,7 @@
 
 # Overview of the Repository
 
-This repository includes three parts: 
+This repository includes four parts: 
 
 1. `./Full Version` presents our full papaer.
 2. `./Bugs List` contains the representative bugs found by Leopard.

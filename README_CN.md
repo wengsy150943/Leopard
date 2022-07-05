@@ -5,7 +5,7 @@
 
 # 仓库概览
 
-这个仓库包含三个部分
+这个仓库包含四个部分
 
 1. `./Full Version` 展示了Leopard全文。
 1. `./Bugs List` 包含Leopard发现的代表性代码缺陷。
