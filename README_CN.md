@@ -7,9 +7,9 @@
 
 这个仓库包含四个部分
 
-1. `./Full Version` 展示了Leopard论文的完整版本。
-1. `./Bugs List` 包含Leopard发现的代表性代码缺陷。
-2. `./Interesting Bugs` 演示在TiDB中发现的几个代码缺陷。
+1. `./Full Paper.pdf 展示了Leopard论文的完整版本。
+1. `./Bugs List.pdf` 包含Leopard发现的代表性代码缺陷。
+2. `./Interesting Bugs.pdf` 演示在TiDB中发现的几个代码缺陷。
 3. `./BugReporducer` 是在TiDB中发现的几个错误的详细重现步骤。
 
 # 代码缺陷复现器（Bug Reproducer）
