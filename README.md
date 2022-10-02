@@ -11,7 +11,7 @@ This repository includes five parts:
 2. `./Bug List.pdf` contains the representative bugs found by Leopard.
 3. `./Interesting Bugs.pdf` demonstrates the several bugs found in TiDB.
 4. `./BugReporducer` is the detailed reproduce step for several bugs found in TiDB.
-5. `./Isolation Level.pdf` describes the definition and implementation of isolation levels in popular commercial DBMSs.
+5. `./IL_Description.pdf` describes the definition and implementation of isolation levels in popular commercial DBMSs.
 
 # Bug Reproducer
 

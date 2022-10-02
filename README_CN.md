@@ -11,7 +11,7 @@
 2. `./Bugs List.pdf` 包含Leopard发现的代表性代码缺陷。
 3. `./Interesting Bugs.pdf` 演示在TiDB中发现的几个代码缺陷。
 4. `./BugReporducer` 是在TiDB中发现的几个错误的详细重现步骤。
-5. `./Isolation Levels.pdf` 描述了流行商业数据库中隔离级别的定义与实现。
+5. `./IL_Description.pdf` 描述了流行商业数据库中隔离级别的定义与实现。
 
 # 代码缺陷复现器（Bug Reproducer）
 
