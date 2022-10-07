@@ -1,9 +1,7 @@
-# Leopard Online Demo Documentation
+# Leopard Online Service Documentation
 
-## Online Demo Link
-In case of server downtime, we will update Leopard online demo service link here.  
-
-**Link:** [Current Online Demo Link](http://106.75.210.54/)
+## Online Service Link
+**Link:** [Current Online Leopard Service Link](http://106.75.210.54/)
 
 ## Options
 
@@ -11,9 +9,9 @@ In case of server downtime, we will update Leopard online demo service link here
 |-------------|----------------------------------------|
 | Workload    | SmallBank/TPC-C                        |
 | Database    | Postgres/MySQL                         |
-| Scalefactor | the scale of database                  |
-| Terminals   | the number of cocurrent terminals      |
-| Runtime     | the workload execution time in second |
+| Scalefactor | The scale of database                  |
+| Terminals   | The number of cocurrent terminals      |
+| Runtime     | The workload execution time in second |
 
 ## Execute
 
