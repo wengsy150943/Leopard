@@ -7,7 +7,7 @@
 
 This repository includes five parts: 
 
-1. `./Full Paper.pdf` contains the full verison of our paper.
+1. `./Technical Report.pdf` contains the full verison of our paper.
 2. `./Bug List.pdf` contains the representative bugs found by Leopard.
 3. `./Bug Reporducer` is the detailed reproduce step for several bugs found in TiDB.
 4. `./IL_Description.pdf` describes the definition and implementation of isolation levels in popular commercial DBMSs.
