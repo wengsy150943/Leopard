@@ -1,7 +1,4 @@
-- [English](/README.md)  
-- [简体中文](/README_CN.md)  
-
-#　Repository Overview
+# Repository Overview 
 
 This repository includes five parts: 
 
